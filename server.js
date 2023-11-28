@@ -11,9 +11,10 @@ const PORT = process.env.PORT || 5050
 
 const app = express()
 app.use(cors()) 
+app.use(express.json());
 app.use(bodyParser.json())
-app.use("/pastry", pastryRoute);
-app.use("/user", userRoute);
+app.use("/", pastryRoute);
+app.use("/", userRoute);
 
 
 mongoose.set("strictQuery", false)
