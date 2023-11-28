@@ -69,16 +69,20 @@ router.get("/pastries", async (req, res) => {
 
 
   function calculatePrice(pastry) {
-    const ageInDays = Math.floor((Date.now() - pastry.creationDate) / (1000 * 60 * 60 * 24));
+    const ageInDays = Math.floor((Date.now() - new Date(pastry.createdAt).getTime()) / (1000 * 60 * 60 * 24));
+    
     if (ageInDays === 0) {
-        return pastry.originalPrice; 
+        return pastry.price; 
     } else if (ageInDays === 1) {
-        return pastry.originalPrice * 0.80;
-        return pastry.originalPrice * 0.20; 
+        return pastry.price * 0.80;
+    } else if (ageInDays === 2) {
+        return pastry.price * 0.20; 
     } else {
         return null; 
     }
 }
+
+
 
 module.exports = router;
   
