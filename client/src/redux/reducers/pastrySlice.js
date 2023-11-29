@@ -1,8 +1,8 @@
 
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import { FETCH_PASTRIES_API } from "../../constants/Constants";
 
-const PASTRIES_URL = 'your-api-endpoint';
 
 const initialState = {
     pastries: [],
@@ -12,7 +12,7 @@ const initialState = {
 
 
 export const fetchPastries = createAsyncThunk('pastries/fetchPastries', async () => {
-    const response = await axios.get(PASTRIES_URL);
+    const response = await axios.get(FETCH_PASTRIES_API);
     return response.data;
 });
 

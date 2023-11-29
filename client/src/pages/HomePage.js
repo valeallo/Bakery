@@ -1,11 +1,17 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import Hero from '../components/Hero'
+import AllPastries from '../components/AllPastries'
+
+
 
 const HomePage = () => {
+ 
+  
   return (
     <>
-    <Hero />
-    
+     <Hero />
+     <AllPastries />
+
     </>
   )
 }

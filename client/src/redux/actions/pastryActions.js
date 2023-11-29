@@ -8,7 +8,7 @@ import {
   export const fetchPastries = () => async dispatch => {
     dispatch({ type: FETCH_PASTRIES_START });
     try {
-      const response = await fetch('/api/pastries'); // Adjust API endpoint as needed
+      const response = await fetch('/api/pastries'); 
       const data = await response.json();
       dispatch({ type: FETCH_PASTRIES_SUCCESS, payload: data });
     } catch (error) {
