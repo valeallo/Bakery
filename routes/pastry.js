@@ -2,14 +2,20 @@ const express = require("express");
 const router = express.Router();
 const Pastry = require("../models/pastry");
 
-router.get('/pastries', async (req, res) => {
-    try {
+
+router.get("/pastries", async (req, res) => {
+  try {
       const pastries = await Pastry.find();
-      res.json(pastries);
-    } catch (error) {
-      res.status(500).json({ message: error.message });
-    }
-  });
+      const pricedPastries = pastries.map(pastry => {
+          const price = calculatePrice(pastry);
+          return price !== null ? { ...pastry.toObject(), price } : null;
+      }).filter(pastry => pastry !== null); 
+
+      res.json(pricedPastries);
+  } catch (err) {
+      res.status(500).send({ message: "An error occurred", error: err });
+  }
+});
   
 
   router.get('/pastries/:id', async (req, res) => {
@@ -59,4 +65,24 @@ router.get('/pastries', async (req, res) => {
       res.status(500).json({ message: error.message });
     }
   });
+
+
+
+  function calculatePrice(pastry) {
+    const ageInDays = Math.floor((Date.now() - new Date(pastry.createdAt).getTime()) / (1000 * 60 * 60 * 24));
+    
+    if (ageInDays === 0) {
+        return pastry.price; 
+    } else if (ageInDays === 1) {
+        return pastry.price * 0.80;
+    } else if (ageInDays === 2) {
+        return pastry.price * 0.20; 
+    } else {
+        return null; 
+    }
+}
+
+
+
+module.exports = router;
   

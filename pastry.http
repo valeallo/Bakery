@@ -1,0 +1,30 @@
+GET http://localhost:5000/pastries
+######
+GET http://localhost:5000/pastries/6566740f078d72c2977da1b3
+######
+DELETE http://localhost:5000/pastries/6566740f078d72c2977da1b3 HTTP/1.1
+######
+POST http://localhost:5000/pastries
+Content-Type: application/json
+
+{
+  "name": "Red Velvet Cake",
+  "price": 10.0,
+  "ingredients": [
+    {"name": "Chocolate", "quantity": 2, "unit": "cups"},
+    {"name": "Flour", "quantity": 3, "unit": "cups"}
+  ]
+}
+
+######
+PUT http://localhost:5000/pastries/6566740f078d72c2977da1b3
+Content-Type: application/json
+
+{
+  "name": "Updated Chocolate Cake",
+  "price": 12.0,
+  "ingredients": [
+    {"name": "Chocolate", "quantity": 2.5, "unit": "cups"},
+    {"name": "Flour", "quantity": 3.5, "unit": "cups"}
+  ]
+}

@@ -30,19 +30,19 @@ router.get("/user/:id", async (req, res) => {
 
 
 
-router.delete("/users/:id", async (req, res) => {
+router.delete("/user/:id", async (req, res) => {
     const { id } = req.params;
     try {
-        const user = await Users.findById(id);
-        if (!user) {
+        const result = await Users.findByIdAndDelete(id);
+        if (!result) {
             return res.status(404).json({ message: `User with id ${id} not found` });
         }
-        await user.remove();
         res.status(200).json({ message: `User ${id} deleted successfully` });
     } catch (err) {
         res.status(500).json({ message: "An error has occurred", error: err.message });
     }
 });
+
 
 
 
@@ -71,11 +71,6 @@ router.patch("/users/:id", async (req, res) => {
 
 
   router.post('/register', [ 
-    check('username', 'username is required')
-        .trim()
-        .exists()
-        .isLength({ min: 3 })
-        .withMessage('username must be at least 3 chars long'),
     check('email', 'email is required')
         .trim()
         .exists()
@@ -99,7 +94,6 @@ async (req, res) => {
         const hashPassword = await bcrypt.hash(req.body.password, salt);
 
         const newUser = new Users({
-            username: req.body.username,
             email: req.body.email,
             password: hashPassword,
             role: req.body.role
@@ -130,7 +124,7 @@ async (req, res) => {
 
 
 
-router.post("/users/login", async (req, res) => {
+router.post("/login", async (req, res) => {
     try {
         const user = await Users.findOne({ email: req.body.email });
         
@@ -151,16 +145,5 @@ router.post("/users/login", async (req, res) => {
     }
 });
 
-
-
-
-
-  
-    
- 
-
-  
-
-
         
-module.exports = router
+module.exports = router;
