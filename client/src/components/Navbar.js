@@ -9,15 +9,17 @@ const Navbar = () => {
     return (
         <>
             <div className=" w-full">
-                <div className="flex items-center justify-between flex-wrap  bg-[#3D2C8D] p-4">
+                <div className="flex h-4 bg-[#efa9a9]">
+                </div>
+                <div className="flex items-center justify-between flex-wrap p-4 sticky">
                     <div className="flex items-center flex-shrink-0 text-white">
                         <div className="flex">
                             <div></div>
                             <span
-                                style={{ fontFamily: 'Courier New' }}
-                                className="font-semibold text-3xl tracking-tight mr-10"
+                                style={{ fontFamily: 'Dancing Script, cursive' }}
+                                className="font-semibold text-4xl tracking-tight mr-10 text-[#ff857e]"
                             >
-                                My Personal Blog
+                                Pasticceria di Luana e Maria
                             </span>
                         </div>
                         <div className="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
