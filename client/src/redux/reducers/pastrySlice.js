@@ -16,6 +16,11 @@ export const fetchPastries = createAsyncThunk('pastries/fetchPastries', async ()
     return response.data;
 });
 
+export const fetchPastryById = createAsyncThunk('pastries/fetchPastryById', async (pastryId) => {
+    const response = await axios.get(`${FETCH_PASTRIES_API}/${pastryId}`);
+    return response.data;
+});
+
 
 const pastriesSlice = createSlice({
     name: 'pastries',
@@ -35,6 +40,17 @@ const pastriesSlice = createSlice({
             .addCase(fetchPastries.rejected, (state, action) => {
                 state.status = 'failed';
                 state.error = action.error.message;
+            })
+            .addCase(fetchPastryById.pending, (state) => {
+                state.status = 'loading';
+            })
+            .addCase(fetchPastryById.fulfilled, (state, action) => {
+                state.status = 'succeeded';
+                state.pastries.push(action.payload);
+            })
+            .addCase(fetchPastryById.rejected, (state, action) => {
+                state.status = 'failed';
+                state.error = action.error.message;
             });
     }
 });
@@ -42,5 +58,7 @@ const pastriesSlice = createSlice({
 export const selectAllPastries = (state) => state.pastries.pastries;
 export const getPastriesStatus = (state) => state.pastries.status;
 export const getPastriesError = (state) => state.pastries.error;
+export const selectCurrentPastry = (state, pastryId) => 
+    state.pastries.pastries.find(pastry => pastry._id === pastryId);
 
 export default pastriesSlice.reducer;

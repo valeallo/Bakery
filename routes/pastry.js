@@ -33,7 +33,8 @@ router.get("/pastries", async (req, res) => {
     const pastry = new Pastry({
       name: req.body.name,
       price: req.body.price,
-      ingredients: req.body.ingredients
+      ingredients: req.body.ingredients,
+      imageUrl: req.body.imageUrl
     });
   
     try {

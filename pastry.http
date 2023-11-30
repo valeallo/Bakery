@@ -8,12 +8,15 @@ POST http://localhost:5000/pastries
 Content-Type: application/json
 
 {
-  "name": "Red Velvet Cake",
-  "price": 10.0,
+  "name": "Cupcake Pistacchio e cioccolato",
+  "price": 8.0,
   "ingredients": [
-    {"name": "Chocolate", "quantity": 2, "unit": "cups"},
-    {"name": "Flour", "quantity": 3, "unit": "cups"}
-  ]
+    {"name": "Pistacchio", "quantity": 30, "unit": "g"},
+    {"name": "Cioccolato", "quantity": 30, "unit": "g"},
+    {"name": "Uovo", "quantity": 2, "unit": " "},
+    {"name": "Zucchero", "quantity": 20, "unit": "g"}
+  ],
+  "imageUrl": "https://images.pexels.com/photos/1635985/pexels-photo-1635985.jpeg"
 }
 
 ######

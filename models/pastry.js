@@ -17,6 +17,10 @@ const ingredientSchema = new mongoose.Schema({
       required: true
     },
     ingredients: [ingredientSchema],
+    imageUrl: {
+      type: String,
+      required: false 
+    }
   } ,{
     timestamps: true
 });
