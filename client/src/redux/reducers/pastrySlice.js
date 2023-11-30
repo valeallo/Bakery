@@ -22,6 +22,35 @@ export const fetchPastryById = createAsyncThunk('pastries/fetchPastryById', asyn
 });
 
 
+export const createPastry = createAsyncThunk('pastries/createPastry', async (pastryData, { rejectWithValue }) => {
+    try {
+        const response = await axios.post(`${FETCH_PASTRIES_API}`, pastryData);
+        return response.data;
+    } catch (error) {
+        return rejectWithValue(error.response.data);
+    }
+});
+
+export const updatePastry = createAsyncThunk('pastries/updatePastry', async ({ id, pastryData }, { rejectWithValue }) => {
+    try {
+        const response = await axios.put(`${FETCH_PASTRIES_API}/${id}`, pastryData);
+        return response.data;
+    } catch (error) {
+        return rejectWithValue(error.response.data);
+    }
+});
+
+export const deletePastry = createAsyncThunk('pastries/deletePastry', async (id, { rejectWithValue }) => {
+    try {
+        await axios.delete(`${FETCH_PASTRIES_API}/${id}`);
+        return id; 
+    } catch (error) {
+        return rejectWithValue(error.response.data);
+    }
+});
+
+
+
 const pastriesSlice = createSlice({
     name: 'pastries',
     initialState,
@@ -51,6 +80,16 @@ const pastriesSlice = createSlice({
             .addCase(fetchPastryById.rejected, (state, action) => {
                 state.status = 'failed';
                 state.error = action.error.message;
+            })
+            .addCase(createPastry.fulfilled, (state, action) => {
+                state.pastries.push(action.payload);
+            })
+            .addCase(updatePastry.fulfilled, (state, action) => {
+                const index = state.pastries.findIndex(pastry => pastry._id === action.payload._id);
+                state.pastries[index] = action.payload;
+            })
+            .addCase(deletePastry.fulfilled, (state, action) => {
+                state.pastries = state.pastries.filter(pastry => pastry._id !== action.payload);
             });
     }
 });
