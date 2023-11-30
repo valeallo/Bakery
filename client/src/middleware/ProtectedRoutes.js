@@ -1,5 +1,5 @@
 import React from 'react'
-import { Outlet } from 'react-router-dom'
+import { useLocation, Navigate, Outlet } from "react-router-dom"
 import LoginNeeded from '../pages/LoginNeeded'
 
 const authorize = () => {
@@ -9,7 +9,8 @@ const authorize = () => {
 
 const ProtectedRoutes = () => {
     const isAuthorized = authorize()
-    return isAuthorized ? <Outlet /> : <LoginNeeded />
+    const location = useLocation()
+    return isAuthorized ? <Outlet /> :  <Navigate to="/login" state={{ from: location }} replace />
 }
 
 export default ProtectedRoutes

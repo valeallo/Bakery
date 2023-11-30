@@ -7,7 +7,7 @@ POST http://localhost:5000/register HTTP/1.1
 content-type: application/json
 
 {
-    "email":"Vain99a@advvmin.it",
+    "email":"Luana@email.it",
     "password":"ciaociao",
     "role":"admin"
 }
