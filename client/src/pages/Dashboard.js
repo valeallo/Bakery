@@ -1,8 +1,12 @@
 import React from 'react'
+import PastryTable from '../components/PastryTable'
 
 const Dashboard = () => {
   return (
-    <div>Dashboard</div>
+    <div>
+
+      <PastryTable />
+    </div>
   )
 }
 
