@@ -34,7 +34,8 @@ router.get("/pastries", async (req, res) => {
       name: req.body.name,
       price: req.body.price,
       ingredients: req.body.ingredients,
-      imageUrl: req.body.imageUrl
+      imageUrl: req.body.imageUrl,
+      quantity: req.body.quantity
     });
   
     try {

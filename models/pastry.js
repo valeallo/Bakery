@@ -20,6 +20,10 @@ const ingredientSchema = new mongoose.Schema({
     imageUrl: {
       type: String,
       required: false 
+    },
+    quantity: {
+      type: Number,
+      required: true
     }
   } ,{
     timestamps: true

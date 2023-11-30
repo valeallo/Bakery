@@ -16,7 +16,8 @@ Content-Type: application/json
     {"name": "Uovo", "quantity": 2, "unit": " "},
     {"name": "Zucchero", "quantity": 20, "unit": "g"}
   ],
-  "imageUrl": "https://images.pexels.com/photos/1635985/pexels-photo-1635985.jpeg"
+  "imageUrl": "https://images.pexels.com/photos/1635985/pexels-photo-1635985.jpeg",
+  "quantity": 3
 }
 
 ######
