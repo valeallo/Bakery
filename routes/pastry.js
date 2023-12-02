@@ -69,6 +69,18 @@ router.get('/pastries/:id', async (req, res) => {
       res.status(400).json({ message: error.message });
     }
   });
+
+
+  router.delete('/pastries/:id', async (req, res) => {
+    try {
+      const pastry = await Pastry.findByIdAndDelete(req.params.id);
+      if (!pastry) return res.status(404).json({ message: 'Pastry not found' });
+      res.json({ message: 'Pastry deleted' });
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
+  });
+
   
 
  

@@ -1,6 +1,7 @@
 import React from 'react'
 import {Link} from "react-router-dom"
 import EditIcon from '@mui/icons-material/Edit';
+import DeleteButton from './DeleteButton';
 
 const PastryLine = ({pastry}) => {
   return (
@@ -27,7 +28,7 @@ const PastryLine = ({pastry}) => {
     </td>
 
     <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-      {/* <DeleteButton id={pai._id} element="pai" /> */}
+      <DeleteButton id={pastry._id} />
     </td>
     <div></div>
   </tr>
