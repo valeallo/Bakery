@@ -8,10 +8,10 @@ const Navbar = () => {
 
     return (
         <>
-            <div className=" w-full">
+            <div className=" w-full sticky">
                 <div className="flex h-4 bg-[#efa9a9]">
                 </div>
-                <div className="flex items-center justify-between flex-wrap p-4 sticky">
+                <div className="flex items-center justify-between flex-wrap p-4 sticky bg-white">
                     <div className="flex items-center flex-shrink-0 text-white">
                         <div className="flex">
                             <div></div>

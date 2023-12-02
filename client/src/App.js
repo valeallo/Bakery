@@ -13,8 +13,8 @@ function App() {
 
   return (
     <div className="App">
-       <NavbarWrapper />
        <BrowserRouter>
+       <NavbarWrapper />
             <Routes>
                 <Route path="/login" element={<Login />} /> 
                 <Route path="/" element={<HomePage />} />

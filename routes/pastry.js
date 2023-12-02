@@ -5,15 +5,18 @@ const Pastry = require("../models/pastry");
 
 router.get("/pastries", async (req, res) => {
   try {
-      const pastries = await Pastry.find();
-      const pricedPastries = pastries.map(pastry => {
-          const price = calculatePrice(pastry);
-          return price !== null ? { ...pastry.toObject(), price } : null;
-      }).filter(pastry => pastry !== null); 
+    const pastries = await Pastry.find();
+    const pricedPastries = pastries.map(pastry => {
+      const pricing = calculatePrice(pastry);
+      if (pricing) {
+        return { ...pastry.toObject(), ...pricing };
+      }
+      return null; 
+    }).filter(pastry => pastry !== null);
 
-      res.json(pricedPastries);
+    res.json(pricedPastries);
   } catch (err) {
-      res.status(500).send({ message: "An error occurred", error: err });
+    res.status(500).send({ message: "An error occurred", error: err });
   }
 });
   
@@ -69,21 +72,27 @@ router.get("/pastries", async (req, res) => {
   });
 
 
-
   function calculatePrice(pastry) {
     const ageInDays = Math.floor((Date.now() - new Date(pastry.createdAt).getTime()) / (1000 * 60 * 60 * 24));
-    
-    if (ageInDays === 0) {
-        return pastry.price; 
-    } else if (ageInDays === 1) {
-        return pastry.price * 0.80;
+    let discountedRate = 1; 
+    let discountRate = 0;
+  
+    if (ageInDays === 1) {
+      discountedRate = 0.80;
+      discontRate = 20;
     } else if (ageInDays === 2) {
-        return pastry.price * 0.20; 
-    } else {
-        return null; 
+      discountedRate = 0.20; 
+      discountRate = 80;
+    } else if (ageInDays >= 3) {
+      return null; 
     }
-}
-
+  
+    const discountedPrice = parseFloat((pastry.price * discountedRate).toFixed(2));
+    return { 
+      discountedPrice: discountedPrice, 
+      discountRate: discountRate 
+    };
+  }
 
 
 module.exports = router;
