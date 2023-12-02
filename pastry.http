@@ -1,30 +1,34 @@
 GET http://localhost:5000/pastries
 ######
-GET http://localhost:5000/pastries/6566740f078d72c2977da1b3
+GET http://localhost:5000/pastries/6567c3873c00f3f02ed39f7e
 ######
-DELETE http://localhost:5000/pastries/6566740f078d72c2977da1b3 HTTP/1.1
+DELETE http://localhost:5000/pastries/6567daff3c00f3f02ed3a22b HTTP/1.1
 ######
 POST http://localhost:5000/pastries
 Content-Type: application/json
 
 {
-  "name": "Red Velvet Cake",
-  "price": 10.0,
+  "name": "Cupcake Pistacchio e cioccolato",
+  "price": 8.0,
   "ingredients": [
-    {"name": "Chocolate", "quantity": 2, "unit": "cups"},
-    {"name": "Flour", "quantity": 3, "unit": "cups"}
-  ]
+    {"name": "Pistacchio", "quantity": 30, "unit": "g"},
+    {"name": "Cioccolato", "quantity": 30, "unit": "g"},
+    {"name": "Uovo", "quantity": 2, "unit": " "},
+    {"name": "Zucchero", "quantity": 20, "unit": "g"}
+  ],
+  "imageUrl": "https://images.pexels.com/photos/1635985/pexels-photo-1635985.jpeg",
+  "quantity": 3
 }
 
 ######
-PUT http://localhost:5000/pastries/6566740f078d72c2977da1b3
+PUT http://localhost:5000/pastries/656b8aedeada8a9b84511e1f
 Content-Type: application/json
 
 {
-  "name": "Updated Chocolate Cake",
+  "name": "Gelato",
   "price": 12.0,
   "ingredients": [
-    {"name": "Chocolate", "quantity": 2.5, "unit": "cups"},
-    {"name": "Flour", "quantity": 3.5, "unit": "cups"}
+    {"name": "zucchero", "quantity": 2.5, "unit": "g"},
+    {"name": "latte", "quantity": 3.5, "unit": "l"}
   ]
 }

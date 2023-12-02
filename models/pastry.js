@@ -17,6 +17,15 @@ const ingredientSchema = new mongoose.Schema({
       required: true
     },
     ingredients: [ingredientSchema],
+    imageUrl: {
+      type: String,
+      required: false,
+      default: "https://images.pexels.com/photos/808923/pexels-photo-808923.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+    },
+    quantity: {
+      type: Number,
+      required: true
+    }
   } ,{
     timestamps: true
 });
