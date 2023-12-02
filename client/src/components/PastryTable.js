@@ -45,9 +45,6 @@ const PastryTable = () => {
                     Quantità
                   </th>
                   <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4">
-                    Data di produzione
-                  </th>
-                  <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4">
                    Ingredienti
                   </th>
                
