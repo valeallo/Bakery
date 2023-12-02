@@ -1,7 +1,9 @@
 import PastryLine from './PastryLine';
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchPastries, selectAllPastries, getPastriesStatus } from '../redux/reducers/pastrySlice';
+import AddIcon from '@mui/icons-material/Add';
+import RemoveIcon from '@mui/icons-material/Remove';
 
 
 
@@ -10,6 +12,14 @@ const PastryTable = () => {
   const dispatch = useDispatch();
   const pastries = useSelector(selectAllPastries);
   const status = useSelector(getPastriesStatus);
+  const [addPastry, setAddPastry] = useState(false)
+  const defaultPastry = {
+    "name": "",
+    "price": 0,
+    "ingredients": [],
+    "imageUrl": "https://images.pexels.com/photos/808923/pexels-photo-808923.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "quantity": 0
+  }
 
   useEffect(() => {
       if (status === 'idle') {
@@ -17,6 +27,11 @@ const PastryTable = () => {
           console.log("pastries", pastries)
       }
   }, [status, dispatch]);
+
+
+  useEffect(() => {
+    console.log(addPastry, "addPastry")
+}, [addPastry]);
  
   return (
     <>
@@ -47,14 +62,19 @@ const PastryTable = () => {
                   <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4">
                    Ingredienti
                   </th>
-               
+                  <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4">
+                  {addPastry?   <RemoveIcon onClick={()=>{setAddPastry(false)}}/>   : <AddIcon onClick={()=>{setAddPastry(true)}}/>}
+                  </th>
+            
               </thead>
+
               <tbody>
+              {addPastry &&  <PastryLine  pastry={defaultPastry} isNew={true} closeAddLine={()=>{setAddPastry(false)}}/>}
               {pastries &&
-        pastries.map((pastry, _index) => {
-                return <PastryLine key={_index} pastry={pastry} />
-            }
-            )}
+                pastries.map((pastry, _index) => {
+                        return <PastryLine key={_index + "tableLine"} pastry={pastry} isNew={false}/>
+                    }
+                    )}
                 
               </tbody>
             </table>

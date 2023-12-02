@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { fetchPastries, selectAllPastries, getPastriesStatus } from '../redux/reducers/pastrySlice';
 import ProductCard from '../components/ProductCard';
 
+
 const AllPastries = () => {
     const dispatch = useDispatch();
     const pastries = useSelector(selectAllPastries);

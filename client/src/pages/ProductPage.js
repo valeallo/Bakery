@@ -50,16 +50,21 @@ const ProductPage = () => {
                       <div class="flex mb-4">
                         
                       </div>
-                      <p class="leading-relaxed">Fam locavore kickstarter distillery. Mixtape chillwave tumeric sriracha taximy chia microdosing tilde DIY. XOXO fam indxgo juiceramps cornhole raw denim forage brooklyn. Everyday carry +1 seitan poutine tumeric. Gastropub blue bottle austin listicle pour-over, neutra jean shorts keytar banjo tattooed umami cardigan.</p>
+                      <div class="min-h-[50%] p-[10%]">
+                      <ul className="leading-relaxed">
+                        {pastry.ingredients.map((ingredient, index) => (
+                          <li key={index}>{`${ingredient.name}: ${ingredient.quantity}${ingredient.unit}`}</li>
+                        ))}
+                      </ul>
+                      </div>
                       <div class="flex mt-6 items-center pb-5 border-b-2 border-gray-200 mb-5">
                         <div class="flex ml-6 items-center">
                           <span class="mr-3">Quantità</span>
                           <div class="relative">
                             <select class="rounded border appearance-none border-gray-400 py-2 focus:outline-none focus:border-red-500 text-base pl-3 pr-10">
-                              <option>SM</option>
-                              <option>M</option>
-                              <option>L</option>
-                              <option>XL</option>
+                              {[...Array(pastry.quantity)].map((_, i) => (
+                                <option key={i} value={i + 1}>{i + 1}</option>
+                              ))}
                             </select>
                             <span class="absolute right-0 top-0 h-full w-10 text-center text-gray-600 pointer-events-none flex items-center justify-center">
                               <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4" viewBox="0 0 24 24">

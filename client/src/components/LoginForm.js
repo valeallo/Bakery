@@ -31,6 +31,26 @@ const LoginForm = () => {
       }
     }
   }
+
+  const loginAsLuana = async () => {
+    const luanaCredentials = {
+      email: "Luana@email.it",
+      password: "ciaociao"
+    }
+    setFormState(luanaCredentials)
+    try {
+      const res = await axios.post(LOGIN_API, luanaCredentials)
+      if (res.status === 200) {
+        sessionStorage.setItem('authorization', JSON.stringify(res.data))
+        navigate('../dashboard', { replace: true })
+      }
+    } catch (error) {
+      if (error) {
+        setLoginError(error.response.data)
+        console.log(error.response.data)
+      }
+    }
+  }
   
 
   return (
@@ -56,10 +76,10 @@ const LoginForm = () => {
       </div>
       <div className="mb-4">
         <label className="block text-gray-700 font-bold mb-2" htmlFor="password">
-          Password
+          Password 
         </label>
         <input
-          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          className="shadow appearance-none border rounded w-full py-2 px-3  text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           type="password"
           id="password"
           placeholder="Enter password"
@@ -76,9 +96,16 @@ const LoginForm = () => {
       )}
       <button
         type="submit"
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+        className="bg-[#e68d8d]  hover:bg-[#dc6262] mb-4  w-full text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
       >
         Login
+      </button>
+      <button
+        type="submit"
+        onClick={loginAsLuana}
+        className="bg-[#e68d8d]  hover:bg-[#dc6262] w-full text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+      >
+        Entra come Luana
       </button>
     </form>
   </div>

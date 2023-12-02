@@ -21,14 +21,14 @@ Content-Type: application/json
 }
 
 ######
-PUT http://localhost:5000/pastries/6566740f078d72c2977da1b3
+PUT http://localhost:5000/pastries/656b8aedeada8a9b84511e1f
 Content-Type: application/json
 
 {
-  "name": "Updated Chocolate Cake",
+  "name": "Gelato",
   "price": 12.0,
   "ingredients": [
-    {"name": "Chocolate", "quantity": 2.5, "unit": "cups"},
-    {"name": "Flour", "quantity": 3.5, "unit": "cups"}
+    {"name": "zucchero", "quantity": 2.5, "unit": "g"},
+    {"name": "latte", "quantity": 3.5, "unit": "l"}
   ]
 }

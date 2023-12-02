@@ -1,10 +1,26 @@
 import React, { useState, useEffect } from 'react'
 import { NavbarLinks } from '../constants/Constants'
 import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
+import useSessionStorage from '../hooks/useSessionStorage';
 
 const Navbar = () => {
-    
+    const { loggedInUser } = useSessionStorage();
+    const navigate = useNavigate();
 
+    const clearStorage = () => {
+        sessionStorage.clear()
+        setTimeout((window.location.reload(false)), 800)
+        
+    }
+
+    React.useEffect(()=>{
+        console.log(loggedInUser, "loggedinuser")
+    }, [loggedInUser])
+
+    const navigateToLogin = () => {
+        navigate('/login');
+      };
 
     return (
         <>
@@ -24,19 +40,24 @@ const Navbar = () => {
                         </div>
                         <div className="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
                             <div className="text-sm lg:flex-grow">
-                                {/* {NavbarLinks.map((page, index) => {
-                                    return (
-                                        <Link key={index} to={page.link}>
-                                            <li className="block mt-4 lg:inline-block lg:mt-0 text-[#C996CC] hover:text-white mr-4">
-                                                {page.title}
-                                            </li>
-                                        </Link>
-                                    )
-                                })} */}
+                           
                             </div>
                         </div>
                     </div>
                     <div className="mr-5">
+                    {loggedInUser?
+                                <button
+                                onClick={clearStorage}
+                                className="transition ease-in-out delay-150 hover:-translate-y-1  text-pink  rounded-full text-pink-400"
+                                >Logout</button>
+                                :
+                                <button
+                                className="transition ease-in-out delay-150 hover:-translate-y-1  text-pink  rounded-full text-pink-400"
+                                onClick={navigateToLogin}
+                            >
+                                Login
+                            </button>
+                            }
                     </div>
                 </div>
             </div>
