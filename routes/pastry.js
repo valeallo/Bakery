@@ -20,16 +20,26 @@ router.get("/pastries", async (req, res) => {
   }
 });
   
-
-  router.get('/pastries/:id', async (req, res) => {
-    try {
-      const pastry = await Pastry.findById(req.params.id);
-      if (!pastry) return res.status(404).json({ message: 'Pastry not found' });
-      res.json(pastry);
-    } catch (error) {
-      res.status(500).json({ message: error.message });
+router.get('/pastries/:id', async (req, res) => {
+  try {
+    const pastry = await Pastry.findById(req.params.id);
+    if (!pastry) {
+      return res.status(404).json({ message: 'Pastry not found' });
     }
-  });
+
+    const pricing = calculatePrice(pastry);
+    if (pricing) {
+      res.json({ ...pastry.toObject(), ...pricing });
+    } else {
+      res.json(pastry.toObject());
+    }
+
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
+
   
 
   router.post('/pastries', async (req, res) => {
@@ -61,16 +71,7 @@ router.get("/pastries", async (req, res) => {
   });
   
 
-  router.delete('/pastries/:id', async (req, res) => {
-    try {
-      const pastry = await Pastry.findByIdAndDelete(req.params.id);
-      if (!pastry) return res.status(404).json({ message: 'Pastry not found' });
-      res.json({ message: 'Pastry deleted' });
-    } catch (error) {
-      res.status(500).json({ message: error.message });
-    }
-  });
-
+ 
 
   function calculatePrice(pastry) {
     const ageInDays = Math.floor((Date.now() - new Date(pastry.createdAt).getTime()) / (1000 * 60 * 60 * 24));

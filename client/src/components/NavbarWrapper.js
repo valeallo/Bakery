@@ -4,7 +4,7 @@ import { useLocation } from 'react-router-dom';
 import Navbar from './Navbar';
 
 const NavbarWrapper = () => {
-    const currentPath = window.location.pathname;
+    const currentPath = useLocation();
 
   return currentPath !== '/login' ? <Navbar /> : null;
 };

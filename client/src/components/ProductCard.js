@@ -15,7 +15,7 @@ const ProductCard = ({product}) => {
                     backgroundRepeat: 'no-repeat',
             }}
                  />
-                <span className="absolute top-0 left-0 m-2 rounded-full bg-black px-2 text-center text-sm font-medium text-white">{product?.discountRate? product.discountRate : " "}</span>
+                <span className="absolute top-0 left-0 m-2 rounded-full bg-black px-2 text-center text-sm font-medium text-white">  {product?.discountRate? - product.discountRate +"%" : " "}</span>
             </a>
             <div className="mt-4 px-5 pb-5">
                 <a href="#">
@@ -26,7 +26,7 @@ const ProductCard = ({product}) => {
                 <div className="mt-2 mb-2 flex items-center justify-between">
                 <p className="m-7"> 
                     <span className="text-3xl font-bold text-slate-900">{product?.discountedPrice ? product?.discountedPrice : product.price}€</span>
-                    <span className="text-sm text-slate-900 line-through">{product?.discountedPrice ? product.price : " "}€</span>
+                    <span className="text-sm text-slate-900 line-through">{product?.discountedPrice ? product.price + "€" : " "}</span>
                 </p>
 
                 </div>
