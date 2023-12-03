@@ -83,7 +83,9 @@ router.get('/pastries/:id', async (req, res) => {
 
   
 
- 
+  // PUNTO  4 I dolci in vendita invecchiano ed in
+  // base al tempo trascorso dalla loro messa in vendita hanno prezzi diversi: primo giorno
+  // prezzo pieno, secondo giorno costano l’80%, il terzo giorno il 20%.
 
   function calculatePrice(pastry) {
     const ageInDays = Math.floor((Date.now() - new Date(pastry.createdAt).getTime()) / (1000 * 60 * 60 * 24));

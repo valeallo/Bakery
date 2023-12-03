@@ -32,7 +32,8 @@ db.once("open", ()=>{
     console.log("database connected")
 })
 
-
+// PUNTO 5 Il quarto giorno non
+// sono commestibili e devono essere ritirati dalla vendita.
 cron.schedule('0 0 * * *', async () => {
     const threeDaysAgo = new Date(Date.now() - 3 * 24 * 60 * 60 * 1000);
   

@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { selectCurrentPastry } from '../redux/reducers/pastrySlice';
+import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom'
-import { fetchPastryById } from '../redux/reducers/pastrySlice';
 import { FETCH_PASTRIES_API } from '../constants/Constants';
 import axios from 'axios';
 
 const ProductPage = () => {
+
+
+//  PUNTO 7 Opzionale: andando nella pagina del dettaglio del dolce (o tramite overlayer), si scoprono
+// gli ingredienti indicati dalla ricetta.
     const {id} = useParams();
-    const dispatch = useDispatch();
     const [pastry, setPastry] = useState(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
@@ -36,6 +37,7 @@ const ProductPage = () => {
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error}</p>;
+
 
   return (
       <div>

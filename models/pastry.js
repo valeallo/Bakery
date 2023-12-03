@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
-
+// PUNTO 1 La pasticceria vende dolci che hanno un nome ed un prezzo. Ogni dolce è composto da
+// una lista di ingredienti. Opzionale: indicare di ogni ingrediente quantità e unità di misura.
 const ingredientSchema = new mongoose.Schema({
     name: String,
     quantity: Number,
