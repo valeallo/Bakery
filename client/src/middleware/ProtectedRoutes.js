@@ -1,6 +1,6 @@
 import React from 'react'
 import { useLocation, Navigate, Outlet } from "react-router-dom"
-import LoginNeeded from '../pages/LoginNeeded'
+
 
 const authorize = () => {
     const authorization = JSON.parse(sessionStorage.getItem('authorization'))
