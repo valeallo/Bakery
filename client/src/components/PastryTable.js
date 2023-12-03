@@ -24,15 +24,11 @@ const PastryTable = () => {
   useEffect(() => {
       if (status === 'idle') {
           dispatch(fetchPastries());
-          console.log("pastries", pastries)
       }
   }, [status, dispatch]);
 
 
-  useEffect(() => {
-    console.log(addPastry, "addPastry")
-}, [addPastry]);
- 
+
   return (
     <>
     <div className= " w-full p-20 space-y-10 ">

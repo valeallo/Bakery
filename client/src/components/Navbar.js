@@ -14,9 +14,6 @@ const Navbar = () => {
         
     }
 
-    React.useEffect(()=>{
-        console.log(loggedInUser, "loggedinuser")
-    }, [loggedInUser])
 
     const navigateToLogin = () => {
         navigate('/login');

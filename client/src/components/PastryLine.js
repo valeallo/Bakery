@@ -29,7 +29,6 @@ const PastryLine = ({pastry, isNew, closeAddLine}) => {
   };
 
   const handleSubmit= () => {
-    console.log(pastry._id)
     dispatch(updatePastry({ id: pastry._id, pastryData: editedPastry }))
     .then(() => {
       setIsEditMode(false);
@@ -41,7 +40,6 @@ const PastryLine = ({pastry, isNew, closeAddLine}) => {
   }
 
   const handleCreate= () => {
-    console.log(pastry._id)
 
     dispatch(createPastry({...editedPastry}))
     .then(() => {

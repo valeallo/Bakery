@@ -18,7 +18,7 @@ const AllPastries = () => {
     <div>
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 p-4">
         {pastries.map(pastry => (
-            <ProductCard product={pastry}/>
+            <ProductCard product={pastry} key={pastry._id}/>
         ))}
       </div>
     </div>
