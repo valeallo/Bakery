@@ -5,6 +5,8 @@ import { LOGIN_API } from '../constants/Constants'
 
 const LoginForm = () => {
 
+  // PUNTO 2  Opzionale: La gestione della pasticceria è in mano a Luana e Maria che vogliono avere il
+// proprio account per poter accedere all'area di backoffice tramite email e password.
   const [formState, setFormState] = useState({})
   const [loginError, setLoginError] = useState("")
   const navigate = useNavigate()
@@ -14,7 +16,7 @@ const LoginForm = () => {
     if (authorization) {
       navigate('../dashboard', { replace: true })
     }
-  }, [])
+  }, [navigate])
 
   const handleSubmit = async (e) => {
     e.preventDefault()

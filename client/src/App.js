@@ -7,14 +7,14 @@ import Dashboard from './pages/Dashboard';
 import PageNotFound from './pages/PageNotFound';
 import ProductPage from './pages/ProductPage';
 import Login from './pages/Login';
-import NavbarWrapper from './components/NavbarWrapper';
+
 
 function App() {
 
   return (
     <div className="App">
        <BrowserRouter>
-       <NavbarWrapper />
+       <Navbar />
             <Routes>
                 <Route path="/login" element={<Login />} /> 
                 <Route path="/" element={<HomePage />} />

@@ -1,13 +1,11 @@
 import React, {useState} from 'react'
-import {Link} from "react-router-dom"
 import EditIcon from '@mui/icons-material/Edit';
 import TextField from '@mui/material/TextField';
 import DeleteButton from './DeleteButton';
 import CloseIcon from '@mui/icons-material/Close';
 import { useDispatch } from 'react-redux';
 import { updatePastry, createPastry } from '../redux/reducers/pastrySlice'
-import { FETCH_PASTRIES_API } from '../constants/Constants'
-import axios from "axios";
+
 
 const PastryLine = ({pastry, isNew, closeAddLine}) => {
   const [isEditMode, setIsEditMode] = useState(isNew);

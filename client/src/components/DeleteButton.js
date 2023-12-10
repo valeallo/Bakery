@@ -1,5 +1,4 @@
 import React from 'react'
-import axios from 'axios'
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import { useDispatch } from 'react-redux';
 import { deletePastry } from '../redux/reducers/pastrySlice'
