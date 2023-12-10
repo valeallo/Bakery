@@ -2,7 +2,7 @@
   "name": "bakery-server",
   "version": "1.0.0",
   "description": "server for bakery project for the interview",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
