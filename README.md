@@ -11,6 +11,7 @@ step -2
 se non hai nodejs e npm  installato nel pc installa 
 questo progetto è stato fatto con la versione di node 
  `v18.14.2.`
+ testato con versione 22
 
 step-3
 nella repository bakery fai partire il comando
