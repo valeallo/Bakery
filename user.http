@@ -1,5 +1,5 @@
 
-GET http://localhost:5000/user/65667280078d72c2977da1a1
+GET https://blushing-shift-frog.cyclic.app/user/65667280078d72c2977da1a1
 ######
 DELETE http://localhost:5000/user/65667280078d72c2977da1a1 HTTP/1.1
 ######

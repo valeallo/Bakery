@@ -112,7 +112,7 @@ const PastryLine = ({pastry, isNew, closeAddLine}) => {
        variant="outlined"
        size="small"
      />
-      : <><img className="h-10 w-10" src={pastry?.imageUrl} alt={`${pastry?.name}-image`}  /></>}
+      : <><img className="h-10 w-10" src={pastry?.imageUrl} alt={`${pastry?.name}`}  /></>}
       </div>
     </td>
     <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">

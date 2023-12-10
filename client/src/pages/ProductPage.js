@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom'
 import { FETCH_PASTRIES_API } from '../constants/Constants';
 import axios from 'axios';

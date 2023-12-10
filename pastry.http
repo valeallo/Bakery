@@ -1,10 +1,10 @@
-GET http://localhost:5000/pastries
+GET https://blushing-shift-frog.cyclic.app/pastries
 ######
 GET http://localhost:5000/pastries/6567c3873c00f3f02ed39f7e
 ######
 DELETE http://localhost:5000/pastries/6567daff3c00f3f02ed3a22b HTTP/1.1
 ######
-POST http://localhost:5000/pastries
+POST https://blushing-shift-frog.cyclic.app/pastries
 Content-Type: application/json
 
 {
