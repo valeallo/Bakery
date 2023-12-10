@@ -6,17 +6,17 @@ const ProductCard = ({product}) => {
 
   return (<>
         <div className="relative  flex w-full max-w-xs flex-col overflow-hidden rounded-lg border border-gray-100 bg-white shadow-md  hover:scale-105 transition-transform duration-300">
-            <button className="relative mx-3 mt-3 flex h-60 overflow-hidden rounded-xl">
-                <img className="w-full h-100" 
+            <div className="relative mx-3 mt-3 flex h-60 overflow-hidden rounded-xl">
+                <div className="w-full h-100" 
                   style={{
                     backgroundImage: `url("${product.imageUrl? product.imageUrl : defaultImage }")`,
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
                     backgroundRepeat: 'no-repeat',
             }}
-                alt={product.name} />
+                />
                 <span className="absolute top-0 left-0 m-2 rounded-full bg-black px-2 text-center text-sm font-medium text-white">  {product?.discountRate? - product.discountRate +"%" : " "}</span>
-            </button>
+            </div>
             <div className="mt-4 px-5 pb-5">
                 <button>
                 <Link to={`/pastry/${product._id}`}>    
