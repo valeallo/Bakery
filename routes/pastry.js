@@ -98,9 +98,11 @@ router.get('/pastries/:id', async (req, res) => {
     } else if (ageInDays === 2) {
       discountedRate = 0.20; 
       discountRate = 80;
-    } else if (ageInDays >= 3) {
-      return null; 
-    }
+    } 
+    
+    // else if (ageInDays >= 3) {
+    //   return null; 
+    // }
   
     const discountedPrice = parseFloat((pastry.price * discountedRate).toFixed(2));
     return { 
